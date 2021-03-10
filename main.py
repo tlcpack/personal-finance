@@ -11,4 +11,7 @@ dt_string = now.strftime("%d-%m-%Y_%H-%M-%S")
 wb = pd.ExcelFile('monthly_spending.xlsx')
 worksheets = wb.sheet_names
 
-print(worksheets)
+feb = worksheets[4]
+feb_frame = pd.read_excel(wb, feb)
+
+print(feb_frame.head())
