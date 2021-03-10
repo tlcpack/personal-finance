@@ -10,6 +10,7 @@ pandas = "*"
 numpy = "*"
 plotly = "*"
 dash = "*"
+jupyter-dash = "*"
 
 [requires]
 python_version = "3.8"
