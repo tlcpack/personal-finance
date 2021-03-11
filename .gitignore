@@ -131,3 +131,4 @@ dmypy.json
 # Excel
 *.xls
 *.xlsx
+*.csv
