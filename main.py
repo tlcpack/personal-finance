@@ -4,6 +4,10 @@ import openpyxl
 import plotly.express as px
 import plotly.graph_objects as go
 import dtale
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+# from dash.dependencies import Input, Output
 from datetime import datetime
 
 now = datetime.now()
@@ -30,10 +34,27 @@ feb_frame.rename(columns={datetime(2021, 2, 1, 0, 0): 'F-21'}, inplace = True)
 
 fig = px.line(feb_frame, x='Day', y=['F-21','Income'], title='over time')
 sun = px.sunburst(new_j_df, path=['category', 'Vendor'], values='amount')
-sun.show()
+# sun.show()
 
 # fig.show()
 
 # d = dtale.show(feb_frame)
 
 # d.open_browser()
+
+app = dash.Dash()
+
+app.layout = html.Div([
+    html.H1('Financial Dashboard'),
+
+    html.Div([
+        dcc.Graph(figure = fig)
+    ]),
+
+    html.Div([
+        dcc.Graph(figure = sun)
+    ])
+])
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
